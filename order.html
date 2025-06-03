@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Novalayer Home Services - Order</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      h2.display-1 {
+        text-shadow: 0 0 10px #ffc107, 0 0 20px #ffc107;
+        animation: fadeInDown 1s ease-out;
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      form {
+        backdrop-filter: blur(6px);
+        border: 1px solid #0d6efd;
+        box-shadow: 0 0 15px rgba(13, 110, 253, 0.4);
+        transition: all 0.3s ease-in-out;
+      }
+
+      form:hover {
+        box-shadow: 0 0 25px rgba(255, 193, 7, 0.7);
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        box-shadow: 0 0 10px #ffc107;
+        border-color: #ffc107;
+        background-color: #343a40;
+      }
+
+      .btn-warning {
+        transition: all 0.3s ease;
+        border-radius: 12px;
+        font-weight: bold;
+        text-shadow: 0 0 4px #000;
+      }
+
+      .btn-warning:hover {
+        box-shadow: 0 0 12px #ffc107, 0 0 24px #ffc107;
+        transform: scale(1.05);
+      }
+
+      #priceDisplay {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-shadow: 0 0 5px #ffc107;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      footer a:hover {
+        color: #ffffff !important;
+        text-decoration: none;
+      }
+
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #121212; /* Dark background track */
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: #ffc107; /* Gold thumb */
+        border-radius: 10px;
+        border: 2px solid #121212; /* Optional border for contrast */
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: #ffca2c; /* Slightly lighter on hover */
+      }
+      .display-1 {
+        text-shadow: 0 0 8px #ffc107;
+      }
+      .btn-warning {
+        transition: box-shadow 0.3s ease-in-out;
+      }
+      .btn-warning:hover,
+      .btn-warning:focus {
+        box-shadow: 0 0 8px #ffc107, 0 0 15px #ffc107, 0 0 20px #ffc107,
+          0 0 25px #ffc107;
+      }
+    </style>
+  </head>
+  <body class="bg-dark">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="40" height="40" rx="8" fill="#0D6EFD"></rect>
+          <path d="M10 20L20 10L30 20L20 30L10 20Z" fill="white"></path>
+          <circle cx="20" cy="20" r="5" fill="#0D6EFD"></circle>
+        </svg>
+        <a class="navbar-brand fw-bold" href="index.html">Novalayer</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto fw-semibold">
+            <li class="nav-item">
+              <a class="nav-link text-light" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="order.html">Order</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link text-light active"
+                aria-current="page"
+                href="services.html"
+                >Services</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <section class="container my-5 fade-in-up">
+      <h2 class="text-warning display-1 fw-bold text-center mb-4">
+        Book a Service
+      </h2>
+      <p class="text-center text-light mb-4 fs-5">
+        Fill out the form and we’ll bring our services right to your doorstep.
+      </p>
+    </section>
+
+    <div class="container mb-5">
+      <form
+        id="form"
+        class="bg-dark text-light p-4 rounded shadow-lg border border-primary"
+      >
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="firstName" class="form-label">First Name</label>
+            <input
+              type="text"
+              class="form-control bg-secondary text-light border-0"
+              id="firstName"
+              name="First Name"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input
+              type="text"
+              class="form-control bg-secondary text-light border-0"
+              id="lastName"
+              name="Last Name"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="phonemail" class="form-label"
+              >Phone Number/Email Address</label
+            >
+            <input
+              type="text"
+              class="form-control bg-secondary text-light border-0"
+              id="phonemail"
+              name="Phone/Email"
+              required
+            />
+          </div>
+          <div class="col-12">
+            <label for="address" class="form-label">Service Address</label>
+            <input
+              type="text"
+              class="form-control bg-secondary text-light border-0"
+              id="address"
+              name="Address"
+              placeholder="123 Main St, City, State"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="date" class="form-label">Preferred Date</label>
+            <input
+              type="date"
+              class="form-control bg-secondary text-light border-0"
+              id="date"
+              name="Date"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="time" class="form-label">Preferred Time</label>
+            <input
+              type="time"
+              class="form-control bg-secondary text-light border-0"
+              id="time"
+              name="Time"
+              required
+            />
+          </div>
+
+          <div class="col-12">
+            <label for="service" class="form-label">Select a Service</label>
+            <select
+              class="form-select bg-secondary text-light border-0"
+              id="service"
+              name="Service"
+              required
+            >
+              <option value="" disabled selected>Choose one</option>
+              <option value="Garage Cleaning">Garage Cleaning</option>
+              <option value="Yard & Outdoor Help">
+                Yard &amp; Outdoor Help
+              </option>
+              <option value="Furniture Assistance">Furniture Assistance</option>
+              <option value="Home Cleaning">Home Cleaning</option>
+              <option value="Tech Cleanup and Setup">
+                Tech Cleanup and Setup
+              </option>
+              <option value="5 in 1 deal">5 in 1</option>
+            </select>
+            <div class="text-warning fs-1 mt-2" id="priceDisplay"></div>
+            <p class="fs-3 text-light">
+              <strong>*Only Cash Payments Accepted</strong>
+            </p>
+          </div>
+
+          <div class="col-12 text-center mt-4">
+            <button
+              class="btn btn-warning btn-lg px-5 shadow hover-lift me-3"
+              type="submit"
+              id="submit-button"
+            >
+              Submit
+            </button>
+            <button
+              class="btn btn-warning btn-lg px-5 shadow hover-lift"
+              type="button"
+              id="cancel-button"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </form>
+      <div
+        id="message"
+        style="
+          display: none;
+          margin: 20px;
+          padding: 10px;
+          border-radius: 4px;
+          font-weight: bold;
+        "
+      ></div>
+    </div>
+
+    <footer class="text-white text-center py-4 mt-5 bg-primary">
+      <p class="mb-1">
+        &copy; 2025 Novalayer Home Services. All rights reserved.
+      </p>
+      <p class="mb-0">
+        Like 3D prints? Check out this website!
+        <a
+          href="https://om-coding.github.io/Novalayer/home.html"
+          class="text-warning text-decoration-underline"
+          target="_blank"
+          >Click here</a
+        >
+      </p>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const dateInput = document.getElementById("date");
+        const timeInput = document.getElementById("time");
+        const form = document.getElementById("form");
+        const submitButton = document.getElementById("submit-button");
+        const cancelButton = document.getElementById("cancel-button");
+        const messageDiv = document.getElementById("message");
+        const serviceSelect = document.getElementById("service");
+        const priceDisplay = document.getElementById("priceDisplay");
+        const requirementsModal = new bootstrap.Modal(
+          document.getElementById("requirementsModal")
+        );
+        const warning = document.createElement("p");
+        warning.style.color = "red";
+        warning.style.marginTop = "10px";
+        form.appendChild(warning);
+
+        // Set default time to 00:00
+        timeInput.value = "00:00";
+
+        // Example: pretend these are already booked
+        const bookedSlots = [
+          { date: "2025-06-10", time: "14:00" },
+          { date: "2025-06-11", time: "09:00" },
+        ];
+
+        // Set minimum date (3 days from today)
+        const today = new Date();
+        const minDate = new Date(today);
+        minDate.setDate(today.getDate() + 3);
+        dateInput.min = minDate.toISOString().split("T")[0];
+
+        // Optional: Set a maximum date (e.g., 6 months from today)
+        const maxDate = new Date();
+        maxDate.setMonth(maxDate.getMonth() + 6);
+        dateInput.max = maxDate.toISOString().split("T")[0];
+
+        // Service prices
+        const servicePrices = {
+          "Garage Cleaning": "$29",
+          "Yard & Outdoor Help": "$24",
+          "Furniture Assistance": "$22",
+          "Home Cleaning": "$28",
+          "Tech Cleanup and Setup": "$34",
+          "5 in 1 deal": "$69",
+        };
+
+        // Check if a slot is already booked
+        function checkAvailability() {
+          const date = dateInput.value;
+          const time = timeInput.value;
+          const isBooked = bookedSlots.some(
+            (slot) => slot.date === date && slot.time === time
+          );
+          warning.textContent = isBooked
+            ? "This date and time are already booked!"
+            : "";
+          return !isBooked;
+        }
+
+        // Validate date and time
+        function validateDateTime() {
+          if (!dateInput.value || !timeInput.value) return false;
+
+          // Force date parsing to avoid timezone issues
+          const selectedDate = new Date(dateInput.value + "T00:00:00");
+          // Check if date is valid
+          if (isNaN(selectedDate.getTime())) return false;
+
+          const minDate = new Date();
+          minDate.setDate(minDate.getDate() + 3);
+          minDate.setHours(0, 0, 0, 0);
+
+          const day = selectedDate.getDay(); // 0 = Sunday, 6 = Saturday
+          console.log("Selected day:", day, "Date:", dateInput.value);
+
+          if (day !== 0 && day !== 6) return false;
+          if (selectedDate < minDate) return false;
+
+          const time = timeInput.value;
+          // Check if time is between 10:00 and 18:00 AND ends with :00
+          if (time < "10:00" || time > "18:00" || !time.endsWith(":00")) {
+            return false;
+          }
+
+          return true;
+        }
+
+        // Price display
+        serviceSelect.addEventListener("change", function () {
+          const selectedService = serviceSelect.value;
+          priceDisplay.textContent = servicePrices[selectedService]
+            ? `Price: ${servicePrices[selectedService]}`
+            : "";
+        });
+
+        // Force minutes to :00 on change
+        timeInput.addEventListener("change", function () {
+          let time = this.value;
+          if (time && !time.endsWith(":00")) {
+            time = time.split(":")[0] + ":00";
+            this.value = time;
+          }
+          checkAvailability();
+        });
+
+        // Check availability on date change
+        dateInput.addEventListener("change", checkAvailability);
+
+        // Cancel button
+        cancelButton.addEventListener("click", function () {
+          form.reset();
+          messageDiv.style.display = "none";
+          priceDisplay.textContent = "";
+          warning.textContent = "";
+          // Reset time to 00:00
+          timeInput.value = "00:00";
+        });
+
+        // Form submission
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          // Debug: log the date and parsed day
+          console.log(
+            "Submit - Date:",
+            dateInput.value,
+            "Time:",
+            timeInput.value
+          );
+          const selectedDate = new Date(dateInput.value + "T00:00:00");
+          console.log("Submit - Parsed day:", selectedDate.getDay());
+
+          // Check all rules
+          const isValid = validateDateTime() && checkAvailability();
+          if (!isValid) {
+            requirementsModal.show();
+            return;
+          }
+
+          messageDiv.textContent = "Submitting...";
+          messageDiv.style.display = "block";
+          messageDiv.style.backgroundColor = "beige";
+          messageDiv.style.color = "black";
+          submitButton.disabled = true;
+          submitButton.classList.add("is-loading");
+
+          try {
+            const formData = new FormData(this);
+            const formDataObj = {};
+            for (let [key, value] of formData.entries()) {
+              formDataObj[key] = value;
+            }
+
+            const scriptURL =
+              "https://script.google.com/macros/s/AKfycbyD3NOosWFc2KKqB3u-2MD7PLoU1Cwkm5VGX51tBaE2_I6CqeDTqnOeAcl169kMbSgn/exec";
+
+            const response = await fetch(scriptURL, {
+              redirect: "follow",
+              method: "POST",
+              body: JSON.stringify(formDataObj),
+              headers: {
+                "Content-Type": "text/plain;charset=utf-8",
+              },
+            });
+
+            const data = await response.json();
+
+            if (data.status === "success") {
+              messageDiv.textContent =
+                data.message || "Data submitted successfully!";
+              messageDiv.style.backgroundColor = "#48c78e";
+              messageDiv.style.color = "white";
+              form.reset();
+              // Reset time to 00:00 after submit
+              timeInput.value = "00:00";
+            } else {
+              throw new Error(data.message || "Submission failed");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            messageDiv.textContent = "Error: " + error.message;
+            messageDiv.style.backgroundColor = "#f14668";
+            messageDiv.style.color = "white";
+          } finally {
+            submitButton.disabled = false;
+            submitButton.classList.remove("is-loading");
+            setTimeout(() => {
+              messageDiv.textContent = "";
+              messageDiv.style.display = "none";
+            }, 4000);
+          }
+        });
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap Modal for Requirements -->
+    <!-- Bootstrap Modal for Requirements -->
+    <div
+      class="modal fade"
+      id="requirementsModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header border-0">
+            <h5 class="modal-title">Booking Requirements</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              You must select a
+              <strong>weekend date (Saturday or Sunday)</strong>, at least
+              <strong>3 days in advance</strong>, and a time between
+              <strong>10:00 AM and 6:00 PM</strong>
+              <strong>on the hour (e.g., 10:00, 11:00, etc.)</strong>.
+            </p>
+          </div>
+          <div class="modal-footer border-0">
+            <button
+              type="button"
+              class="btn btn-warning"
+              data-bs-dismiss="modal"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
