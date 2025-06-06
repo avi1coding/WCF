@@ -1,19 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Novalayer - Services</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='6' fill='%23FFC107'/%3E%3Cpath d='M8 16L16 8L24 16L16 24L8 16Z' fill='white'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23FFC107'/%3E%3C/svg%3E">
-    <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='6' fill='%23FFC107'/%3E%3Cpath d='M8 16L16 8L24 16L16 24L8 16Z' fill='white'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23FFC107'/%3E%3C/svg%3E">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Novalayer Home Services - Order</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="style.css" />
     <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      h2.display-1 {
+        text-shadow: 0 0 10px #ffc107, 0 0 20px #ffc107;
+        animation: fadeInDown 1s ease-out;
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      form {
+        backdrop-filter: blur(6px);
+        border: 1px solid #0d6efd;
+        box-shadow: 0 0 15px rgba(13, 110, 253, 0.4);
+        transition: all 0.3s ease-in-out;
+      }
+
+      form:hover {
+        box-shadow: 0 0 25px rgba(255, 193, 7, 0.7);
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        box-shadow: 0 0 10px #ffc107;
+        border-color: #ffc107;
+        background-color: #343a40;
+      }
+
+      .btn-warning {
+        transition: all 0.3s ease;
+        border-radius: 12px;
+        font-weight: bold;
+        text-shadow: 0 0 4px #000;
+      }
+
+      .btn-warning:hover {
+        box-shadow: 0 0 12px #ffc107, 0 0 24px #ffc107;
+        transform: scale(1.05);
+      }
+
+      #priceDisplay {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-shadow: 0 0 5px #ffc107;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      footer a:hover {
+        color: #ffffff !important;
+        text-decoration: none;
+      }
+
       ::-webkit-scrollbar {
         width: 12px;
       }
@@ -31,86 +90,20 @@
       ::-webkit-scrollbar-thumb:hover {
         background-color: #ffca2c; /* Slightly lighter on hover */
       }
-      body {
-        background-color: #121212;
-        color: #f8f9fa;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      .display-1 {
+        text-shadow: 0 0 8px #ffc107;
       }
-      /* Heading Glow */
-      h1.display-1,
-      h2.display-4 {
-        text-shadow: 0 0 10px rgba(255, 193, 7, 0.8);
+      .btn-warning {
+        transition: box-shadow 0.3s ease-in-out;
       }
-      /* Card Styles */
-      .card {
-        border-radius: 1rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        background-color: #1e1e1e;
-        color: #f8f9fa;
-      }
-      .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 12px 30px rgba(255, 193, 7, 0.8);
-      }
-      .card-title {
-        font-weight: 700;
-        font-size: 1.5rem;
-        color: #ffc107;
-      }
-      .card-text {
-        font-size: 1.05rem;
-        margin-bottom: 1.25rem;
-        line-height: 1.4;
-      }
-      /* Price Badge */
-      .price-badge {
-        display: inline-block;
-        background: #ffc107;
-        color: #1a1a1a;
-        font-weight: 700;
-        font-size: 1.15rem;
-        padding: 0.3rem 0.75rem;
-        border-radius: 0.75rem;
-        box-shadow: 0 0 8px rgba(255, 193, 7, 0.7);
-        user-select: none;
-      }
-      /* Layout */
-      .container {
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
-        max-width: 1100px;
-      }
-      /* Communities list */
-      .list-group-item {
-        background: #1e1e1e;
-        border: 2px solid #ffc107;
-        color: #ffc107;
-        font-weight: 600;
-        font-size: 1.25rem;
-        border-radius: 0.5rem;
-        margin-bottom: 0.75rem;
-        transition: background-color 0.3s ease, color 0.3s ease;
-        cursor: default;
-      }
-      .list-group-item:hover {
-        background-color: #ffc107;
-        color: #121212;
-        font-weight: 700;
-        box-shadow: 0 8px 15px rgba(255, 193, 7, 0.5);
-      }
-      @media (max-width: 767px) {
-        h1.display-1 {
-          font-size: 2.8rem;
-        }
-        h2.display-4 {
-          font-size: 2.2rem;
-        }
+      .btn-warning:hover,
+      .btn-warning:focus {
+        box-shadow: 0 0 8px #ffc107, 0 0 15px #ffc107, 0 0 20px #ffc107,
+          0 0 25px #ffc107;
       }
     </style>
   </head>
-  <body>
-    <!-- Navbar -->
+  <body class="bg-dark">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
         <svg
@@ -159,124 +152,135 @@
         </div>
       </div>
     </nav>
-
-    <!-- Services Section -->
-    <main class="container mt-5 fade-in-up">
-      <h1 class="display-1 text-warning text-center fw-bold mb-5">
-        What We Offer
-      </h1>
-
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card p-4 shadow-sm">
-            <h5 class="card-title">
-              Garage Cleaning
-              <span class="price-badge">$29</span>
-            </h5>
-            <p class="card-text">
-              We clear out, organize, and clean your garage to create a tidy,
-              functional space you'll love.
-            </p>
-          </div>
+    <section class="container my-5 fade-in-up">
+      <h2 class="text-warning display-1 fw-bold text-center mb-4">
+        Book a Service
+      </h2>
+      <p class="text-center text-light mb-4 fs-5">
+        Fill out the form and we’ll bring our services right to your doorstep.
+      </p>
+    </section>
+    <form
+      id="form"
+      class="bg-dark text-light p-4 rounded shadow-lg border border-primary"
+    >
+      <div class="col-md-6">
+        <label for="firstName" class="form-label">First Name</label>
+        <input
+          type="text"
+          class="form-control bg-secondary text-light border-0"
+          id="firstName"
+          name="First Name"
+          required
+        />
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input
+            type="text"
+            class="form-control bg-secondary text-light border-0"
+            id="lastName"
+            name="Last Name"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="phonemail" class="form-label"
+            >Phone Number/Email Address</label
+          >
+          <input
+            type="text"
+            class="form-control bg-secondary text-light border-0"
+            id="phonemail"
+            name="Phone/Email"
+            required
+          />
+        </div>
+        <div class="col-12">
+          <label for="address" class="form-label">Service Address</label>
+          <input
+            type="text"
+            class="form-control bg-secondary text-light border-0"
+            id="address"
+            name="Address"
+            placeholder="123 Main St, City, State"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="date" class="form-label">Preferred Date</label>
+          <input
+            type="date"
+            class="form-control bg-secondary text-light border-0"
+            id="date"
+            name="Date"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="time" class="form-label">Preferred Time</label>
+          <input
+            type="time"
+            class="form-control bg-secondary text-light border-0"
+            id="time"
+            name="Time"
+            required
+          />
         </div>
 
-        <div class="col-md-4">
-          <div class="card p-4 shadow-sm">
-            <h5 class="card-title">
-              Yard &amp; Outdoor Help
-              <span class="price-badge">$24</span>
-            </h5>
-            <p class="card-text">
-              We mow lawns, rake leaves, water plants, and maintain your yard to
-              keep your outdoor space neat and beautiful year-round.
-            </p>
-          </div>
+        <div class="col-12">
+          <label for="service" class="form-label">Select a Service</label>
+          <select
+            class="form-select bg-secondary text-light border-0"
+            id="service"
+            name="Service"
+            required
+          >
+            <option value="" disabled selected>Choose one</option>
+            <option value="Garage Cleaning">Garage Cleaning</option>
+            <option value="Yard & Outdoor Help">Yard &amp; Outdoor Help</option>
+            <option value="Furniture Assistance">Furniture Assistance</option>
+            <option value="Home Cleaning">Home Cleaning</option>
+            <option value="Tech Cleanup and Setup">
+              Tech Cleanup and Setup
+            </option>
+            <option value="5 in 1 deal">5 in 1</option>
+          </select>
+          <div class="text-warning fs-1 mt-2" id="priceDisplay"></div>
+          <p class="fs-3 text-light">
+            <strong>*Only Cash Payments Accepted</strong>
+          </p>
         </div>
 
-        <div class="col-md-4">
-          <div class="card p-4 shadow-sm">
-            <h5 class="card-title">
-              Furniture Assistance
-              <span class="price-badge">$22</span>
-            </h5>
-            <p class="card-text">
-              We help rearrange rooms, move furniture safely, and set up spaces
-              so your home feels comfortable and perfectly organized.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card p-4 shadow-sm">
-            <h5 class="card-title">
-              Home Cleaning
-              <span class="price-badge">$28</span>
-            </h5>
-            <p class="card-text">
-              We thoroughly clean kitchens, bathrooms, and living spaces,
-              ensuring every corner shines with freshness and your home feels
-              welcoming again.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card p-4 shadow-sm">
-            <h5 class="card-title">
-              Tech Setup and Cleanup
-              <span class="price-badge">$34</span>
-            </h5>
-            <p class="card-text">
-              We expertly organize messy cables, set up your home electronics,
-              and optimize your workspace to create a clean, efficient, and
-              stress-free environment.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card p-4 shadow-sm">
-            <h5 class="card-title">
-              5 in 1 Deal (Most Popular)
-              <span class="price-badge">$69</span>
-            </h5>
-            <p class="card-text">
-              We simultaneously clean homes, organize garages, set up tech,
-              assist with furniture, and maintain yards—providing complete care
-              in one visit.
-            </p>
-          </div>
+        <div class="col-12 text-center mt-4">
+          <button
+            class="btn btn-warning btn-lg px-5 shadow hover-lift me-3"
+            type="submit"
+            id="submit-button"
+          >
+            Submit
+          </button>
+          <button
+            class="btn btn-warning btn-lg px-5 shadow hover-lift"
+            type="button"
+            id="cancel-button"
+          >
+            Cancel
+          </button>
         </div>
       </div>
-
-      <!-- Communities Served -->
-      <section class="mt-5 fade-in-up">
-        <h2 class="display-4 text-warning text-center mb-4">
-          Communities We Serve
-        </h2>
-        <p class="text-center mb-4">
-          Novalayer is proud to serve the following communities:
-        </p>
-        <ul
-          class="list-group list-group-flush mx-auto"
-          style="max-width: 400px"
-        >
-          <li class="list-group-item">Heather Knolls</li>
-          <li class="list-group-item">Wexford</li>
-          <li class="list-group-item">Waverly</li>
-          <li class="list-group-item">Anderson</li>
-          <li class="list-group-item">Hickory Ridge</li>
-          <li class="list-group-item">Tamaron Hollow</li>
-          <li class="list-group-item">Parkdale</li>
-        </ul>
-        <p class="fs-6">
-          *Note, if your community is not one of the following, your order will
-          not be accepted.
-        </p>
-      </section>
-    </main>
-
-    <!-- Footer -->
+    </form>
+    <div
+      id="message"
+      style="
+        display: none;
+        margin: 20px;
+        padding: 10px;
+        border-radius: 4px;
+        font-weight: bold;
+      "
+    ></div>
     <footer class="text-white text-center py-4 mt-5 bg-primary">
       <p class="mb-1">
         &copy; 2025 Novalayer Home Services. All rights reserved.
@@ -291,7 +295,244 @@
         >
       </p>
     </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const dateInput = document.getElementById("date");
+        const timeInput = document.getElementById("time");
+        const form = document.getElementById("form");
+        const submitButton = document.getElementById("submit-button");
+        const cancelButton = document.getElementById("cancel-button");
+        const messageDiv = document.getElementById("message");
+        const serviceSelect = document.getElementById("service");
+        const priceDisplay = document.getElementById("priceDisplay");
+        const requirementsModal = new bootstrap.Modal(
+          document.getElementById("requirementsModal")
+        );
+        const warning = document.createElement("p");
+        warning.style.color = "red";
+        warning.style.marginTop = "10px";
+        form.appendChild(warning);
+
+        // Set default time to 00:00
+        timeInput.value = "00:00";
+
+        // Example: pretend these are already booked
+        const bookedSlots = [
+          { date: "2025-06-10", time: "14:00" },
+          { date: "2025-06-11", time: "09:00" },
+        ];
+
+        // Set minimum date (3 days from today)
+        const today = new Date();
+        const minDate = new Date(today);
+        minDate.setDate(today.getDate() + 3);
+        dateInput.min = minDate.toISOString().split("T")[0];
+
+        // Optional: Set a maximum date (e.g., 6 months from today)
+        const maxDate = new Date();
+        maxDate.setMonth(maxDate.getMonth() + 6);
+        dateInput.max = maxDate.toISOString().split("T")[0];
+
+        // Service prices
+        const servicePrices = {
+          "Garage Cleaning": "$29",
+          "Yard & Outdoor Help": "$24",
+          "Furniture Assistance": "$22",
+          "Home Cleaning": "$28",
+          "Tech Cleanup and Setup": "$34",
+          "5 in 1 deal": "$69",
+        };
+
+        // Check if a slot is already booked
+        function checkAvailability() {
+          const date = dateInput.value;
+          const time = timeInput.value;
+          const isBooked = bookedSlots.some(
+            (slot) => slot.date === date && slot.time === time
+          );
+          warning.textContent = isBooked
+            ? "This date and time are already booked!"
+            : "";
+          return !isBooked;
+        }
+
+        // Validate date and time
+        function validateDateTime() {
+          if (!dateInput.value || !timeInput.value) return false;
+
+          // Force date parsing to avoid timezone issues
+          const selectedDate = new Date(dateInput.value + "T00:00:00");
+          // Check if date is valid
+          if (isNaN(selectedDate.getTime())) return false;
+
+          const minDate = new Date();
+          minDate.setDate(minDate.getDate() + 3);
+          minDate.setHours(0, 0, 0, 0);
+
+          const day = selectedDate.getDay(); // 0 = Sunday, 6 = Saturday
+          console.log("Selected day:", day, "Date:", dateInput.value);
+
+          if (day !== 0 && day !== 6) return false;
+          if (selectedDate < minDate) return false;
+
+          const time = timeInput.value;
+          // Check if time is between 10:00 and 18:00 AND ends with :00
+          if (time < "10:00" || time > "18:00" || !time.endsWith(":00")) {
+            return false;
+          }
+
+          return true;
+        }
+
+        // Price display
+        serviceSelect.addEventListener("change", function () {
+          const selectedService = serviceSelect.value;
+          priceDisplay.textContent = servicePrices[selectedService]
+            ? `Price: ${servicePrices[selectedService]}`
+            : "";
+        });
+
+        // Force minutes to :00 on change
+        timeInput.addEventListener("change", function () {
+          let time = this.value;
+          if (time && !time.endsWith(":00")) {
+            time = time.split(":")[0] + ":00";
+            this.value = time;
+          }
+          checkAvailability();
+        });
+
+        // Check availability on date change
+        dateInput.addEventListener("change", checkAvailability);
+
+        // Cancel button
+        cancelButton.addEventListener("click", function () {
+          form.reset();
+          messageDiv.style.display = "none";
+          priceDisplay.textContent = "";
+          warning.textContent = "";
+          // Reset time to 00:00
+          timeInput.value = "00:00";
+        });
+
+        // Form submission
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          // Debug: log the date and parsed day
+          console.log(
+            "Submit - Date:",
+            dateInput.value,
+            "Time:",
+            timeInput.value
+          );
+          const selectedDate = new Date(dateInput.value + "T00:00:00");
+          console.log("Submit - Parsed day:", selectedDate.getDay());
+
+          // Check all rules
+          const isValid = validateDateTime() && checkAvailability();
+          if (!isValid) {
+            requirementsModal.show();
+            return;
+          }
+
+          messageDiv.textContent = "Submitting...";
+          messageDiv.style.display = "block";
+          messageDiv.style.backgroundColor = "beige";
+          messageDiv.style.color = "black";
+          submitButton.disabled = true;
+          submitButton.classList.add("is-loading");
+
+          try {
+            const formData = new FormData(this);
+            const formDataObj = {};
+            for (let [key, value] of formData.entries()) {
+              formDataObj[key] = value;
+            }
+
+            const scriptURL =
+              "https://script.google.com/macros/s/AKfycbwnqIEaGO11GNJw32lVmHzJaC5vDtc99bdd_quZk4DZEKH5eLK-kzaVrwlh0GqTlQc4bQ/exec";
+
+            const response = await fetch(scriptURL, {
+              redirect: "follow",
+              method: "POST",
+              body: JSON.stringify(formDataObj),
+              headers: {
+                "Content-Type": "text/plain;charset=utf-8",
+              },
+            });
+
+            const data = await response.json();
+
+            if (data.status === "success") {
+              messageDiv.textContent =
+                data.message || "Data submitted successfully!";
+              messageDiv.style.backgroundColor = "#48c78e";
+              messageDiv.style.color = "white";
+              form.reset();
+              // Reset time to 00:00 after submit
+              timeInput.value = "00:00";
+            } else {
+              throw new Error(data.message || "Submission failed");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            messageDiv.textContent = "Error: " + error.message;
+            messageDiv.style.backgroundColor = "#f14668";
+            messageDiv.style.color = "white";
+          } finally {
+            submitButton.disabled = false;
+            submitButton.classList.remove("is-loading");
+            setTimeout(() => {
+              messageDiv.textContent = "";
+              messageDiv.style.display = "none";
+            }, 4000);
+          }
+        });
+      });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap Modal for Requirements -->
+    <!-- Bootstrap Modal for Requirements -->
+    <div
+      class="modal fade"
+      id="requirementsModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header border-0">
+            <h5 class="modal-title">Booking Requirements</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              You must select a
+              <strong>weekend date (Saturday or Sunday)</strong>, at least
+              <strong>3 days in advance</strong>, and a time between
+              <strong>10:00 AM and 6:00 PM</strong>
+              <strong>on the hour (e.g., 10:00, 11:00, etc.)</strong>.
+            </p>
+          </div>
+          <div class="modal-footer border-0">
+            <button
+              type="button"
+              class="btn btn-warning"
+              data-bs-dismiss="modal"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
