@@ -1,556 +1,1043 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Novalayer Home Services - Order</title>
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20rx%3D%228%22%20fill%3D%22%23ffc107%22/%3E%3Cpath%20d%3D%22M10%2020L20%2010L30%2020L20%2030L10%2020Z%22%20fill%3D%22white%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2220%22%20r%3D%225%22%20fill%3D%22%23ffc107%22/%3E%3C/svg%3E"
+    <title>
+      Order Your Website - WebCraftFactory Professional Web Services
+    </title>
+    <meta
+      name="description"
+      content="Start your web project today. Choose from website upgrades or custom development with flexible priority options. Transparent pricing starting at $60."
     />
-
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <style>
+      :root {
+        --primary: #20c997;
+        --secondary: #ff7f50;
+        --dark-bg: #0a0a0a;
+        --card-bg: #1a1a1a;
+        --glass-bg: rgba(26, 26, 26, 0.8);
+        --glow-primary: rgba(32, 201, 151, 0.4);
+        --glow-secondary: rgba(255, 127, 80, 0.4);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: var(--dark-bg);
+        color: #ffffff;
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+        position: relative;
+        min-height: 100vh;
       }
 
-      h2.display-1 {
-        text-shadow: 0 0 10px #ffc107, 0 0 20px #ffc107;
-        animation: fadeInDown 1s ease-out;
+      /* Animated Background */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: radial-gradient(
+            circle at 30% 30%,
+            var(--glow-primary) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 70%,
+            var(--glow-secondary) 0%,
+            transparent 50%
+          );
+        animation: backgroundPulse 8s ease-in-out infinite alternate;
+        z-index: -1;
+        pointer-events: none;
       }
 
-      @keyframes fadeInDown {
+      @keyframes backgroundPulse {
+        0% {
+          opacity: 0.2;
+          transform: scale(1);
+        }
+        100% {
+          opacity: 0.4;
+          transform: scale(1.1);
+        }
+      }
+
+      /* Glass Navigation */
+      .navbar {
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1.2rem 0;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-brand {
+        font-weight: 800;
+        font-size: 2rem;
+        color: var(--primary) !important;
+        text-shadow: 0 0 20px var(--glow-primary);
+        transition: all 0.3s ease;
+      }
+
+      .navbar-brand:hover {
+        transform: scale(1.05);
+        text-shadow: 0 0 30px var(--glow-primary);
+      }
+
+      .navbar-nav .nav-link {
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin: 0 15px;
+        color: rgba(255, 255, 255, 0.9);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 10px 20px !important;
+        border-radius: 12px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .navbar-nav .nav-link::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .navbar-nav .nav-link:hover::before {
+        left: 100%;
+      }
+
+      .navbar-nav .nav-link:hover {
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.05);
+        transform: translateY(-2px);
+      }
+
+      .navbar-nav .order-link {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: #ffffff !important;
+        box-shadow: 0 4px 15px var(--glow-primary);
+        font-weight: 700;
+      }
+
+      .navbar-nav .order-link:hover {
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
+        box-shadow: 0 6px 25px var(--glow-secondary);
+        transform: translateY(-3px);
+      }
+
+      /* Hero Section */
+      .hero-section {
+        padding: 8rem 0 4rem;
+        text-align: center;
+        position: relative;
+      }
+
+      .hero-section h2 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 800;
+        background: linear-gradient(
+          135deg,
+          #ffffff 0%,
+          var(--primary) 50%,
+          var(--secondary) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1.5rem;
+        animation: textGlow 3s ease-in-out infinite alternate;
+      }
+
+      @keyframes textGlow {
         from {
-          opacity: 0;
-          transform: translateY(-20px);
+          filter: drop-shadow(0 0 10px var(--glow-primary));
         }
         to {
-          opacity: 1;
-          transform: translateY(0);
+          filter: drop-shadow(0 0 20px var(--glow-secondary));
         }
       }
 
-      form {
-        backdrop-filter: blur(6px);
-        border: 1px solid #0d6efd;
-        box-shadow: 0 0 15px rgba(13, 110, 253, 0.4);
-        transition: all 0.3s ease-in-out;
+      .hero-section p {
+        font-size: 1.3rem;
+        color: rgba(255, 255, 255, 0.8);
+        max-width: 600px;
+        margin: 0 auto;
       }
 
-      form:hover {
-        box-shadow: 0 0 25px rgba(255, 193, 7, 0.7);
+      /* Premium Form Container */
+      .form-container {
+        background: var(--glass-bg);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 25px;
+        padding: 3rem;
+        margin: 2rem 0;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       }
 
-      input:focus,
-      select:focus,
-      textarea:focus {
-        box-shadow: 0 0 10px #ffc107;
-        border-color: #ffc107;
-        background-color: #343a40;
+      .form-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        animation: shimmer 2s linear infinite;
       }
 
-      .btn-warning {
-        transition: all 0.3s ease;
+      @keyframes shimmer {
+        0% {
+          background-position: -200% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+
+      /* Form Elements */
+      .form-label {
+        font-weight: 600;
+        color: #ffffff;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .form-control,
+      .form-select {
+        background: rgba(255, 255, 255, 0.05);
+        border: 2px solid rgba(255, 255, 255, 0.1);
         border-radius: 12px;
-        font-weight: bold;
-        text-shadow: 0 0 4px #000;
+        color: #ffffff;
+        padding: 15px 20px;
+        font-size: 1rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
       }
 
-      .btn-warning:hover {
-        box-shadow: 0 0 12px #ffc107, 0 0 24px #ffc107;
-        transform: scale(1.05);
+      .form-control:focus,
+      .form-select:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px var(--glow-primary);
+        background: rgba(255, 255, 255, 0.08);
+        outline: none;
       }
 
-      #priceDisplay {
-        font-size: 1.5rem;
-        font-weight: bold;
-        text-shadow: 0 0 5px #ffc107;
-        transition: opacity 0.3s ease-in-out;
+      .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.5);
       }
 
-      footer a:hover {
+      /* Textarea */
+      textarea.form-control {
+        resize: vertical;
+        min-height: 120px;
         color: #ffffff !important;
-        text-decoration: none;
       }
 
-      ::-webkit-scrollbar {
-        width: 12px;
+      /* Select styling */
+      .form-select option {
+        background-color: var(--dark-bg);
+        color: #ffffff;
       }
 
-      ::-webkit-scrollbar-track {
-        background: #121212; /* Dark background track */
+      /* Form Text */
+      .form-text {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
       }
 
-      ::-webkit-scrollbar-thumb {
-        background-color: #ffc107; /* Gold thumb */
-        border-radius: 10px;
-        border: 2px solid #121212; /* Optional border for contrast */
+      /* Price Display - Futuristic */
+      .price-display {
+        background: linear-gradient(
+          135deg,
+          rgba(32, 201, 151, 0.1),
+          rgba(255, 127, 80, 0.1)
+        );
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 2rem;
+        margin-top: 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(15px);
       }
 
-      ::-webkit-scrollbar-thumb:hover {
-        background-color: #ffca2c; /* Slightly lighter on hover */
+      .price-display::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: conic-gradient(
+          from 0deg,
+          transparent,
+          var(--primary),
+          transparent
+        );
+        animation: rotate 4s linear infinite;
+        opacity: 0.1;
       }
-      .display-1 {
-        text-shadow: 0 0 8px #ffc107;
+
+      @keyframes rotate {
+        100% {
+          transform: rotate(360deg);
+        }
       }
-      .btn-warning {
-        transition: box-shadow 0.3s ease-in-out;
+
+      .price-display h5 {
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 2;
       }
-      .btn-warning:hover,
-      .btn-warning:focus {
-        box-shadow: 0 0 8px #ffc107, 0 0 15px #ffc107, 0 0 20px #ffc107,
-          0 0 25px #ffc107;
+
+      .price-display h3 {
+        font-size: 3rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      .price-breakdown {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.95rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      .price-breakdown div {
+        margin: 0.3rem 0;
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        border-left: 3px solid var(--primary);
+      }
+
+      /* Premium Button */
+      .btn-gradient {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border: none;
+        font-weight: 700;
+        padding: 18px 50px;
+        font-size: 1.2rem;
+        border-radius: 50px;
+        color: #ffffff;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 8px 25px var(--glow-primary);
+      }
+
+      .btn-gradient::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .btn-gradient:hover::before {
+        left: 100%;
+      }
+
+      .btn-gradient:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 15px 35px var(--glow-secondary);
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
+      }
+
+      /* Footer */
+      footer {
+        background: rgba(10, 10, 10, 0.9);
+        backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 2rem 0;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 4rem;
+      }
+
+      /* Animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .stagger-1 {
+        transition-delay: 0.1s;
+      }
+      .stagger-2 {
+        transition-delay: 0.2s;
+      }
+      .stagger-3 {
+        transition-delay: 0.3s;
+      }
+      .stagger-4 {
+        transition-delay: 0.4s;
+      }
+
+      /* Form Row Enhancements */
+      .form-row {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-row .form-group {
+        flex: 1;
+      }
+
+      /* Success Animation */
+      .success-animation {
+        animation: successPulse 0.6s ease-out;
+      }
+
+      @keyframes successPulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* Message styling */
+      #message {
+        border-radius: 12px;
+        padding: 15px 20px;
+        margin: 20px 0;
+        font-weight: 600;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Dropdown Notification */
+      .dropdown-notification {
+        position: fixed;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 15px 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(15px);
+        z-index: 9999;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        min-width: 300px;
+        text-align: center;
+        font-weight: 600;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .dropdown-notification.show {
+        top: 20px;
+      }
+
+      .dropdown-notification::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.5),
+          transparent,
+          rgba(255, 255, 255, 0.5)
+        );
+        animation: shimmer 2s linear infinite;
+      }
+
+      /* Checkbox styling */
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+
+      .checkbox-item input[type="checkbox"] {
+        accent-color: var(--primary);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .form-container {
+          padding: 2rem 1.5rem;
+          margin: 1rem 0;
+          border-radius: 20px;
+        }
+
+        .form-row {
+          flex-direction: column;
+          gap: 0;
+        }
+
+        .hero-section {
+          padding: 6rem 0 3rem;
+        }
+
+        .price-display h3 {
+          font-size: 2.5rem;
+        }
       }
     </style>
   </head>
-  <body class="bg-dark">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 40 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect width="40" height="40" rx="8" fill="#ffc107"></rect>
-            <path d="M10 20L20 10L30 20L20 30L10 20Z" fill="white"></path>
-            <circle cx="20" cy="20" r="5" fill="#ffc107"></circle>
-          </svg>
-        </a>
-
-        <a class="navbar-brand fw-bold" href="index.html">Novalayer</a>
+  <body>
+    <!-- Glass Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="home.html">WCF</a>
         <button
-          class="navbar-toggler"
+          class="navbar-toggler border-0"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto fw-semibold">
+          <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link text-light" href="index.html">Home</a>
+              <a class="nav-link" href="home.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="order.html">Order</a>
+              <a class="nav-link order-link" href="order.html">Get Started</a>
             </li>
             <li class="nav-item">
-              <a
-                class="nav-link text-light active"
-                aria-current="page"
-                href="services.html"
-                >Services</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="about.html">About</a>
+              <a class="nav-link" href="about.html">About Us</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <section class="container my-5 fade-in-up">
-      <h2 class="text-warning display-1 fw-bold text-center mb-4">
-        Book a Service
-      </h2>
-      <p class="text-center text-light mb-4 fs-5">
-        Fill out the form and we’ll bring our services right to your doorstep.
-      </p>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <h2 class="fade-in">Start Your Website Project</h2>
+        <p class="lead fade-in stagger-1">
+          Ready to transform your online presence? Fill out the form below to
+          get started. Choose between upgrading your current site or building a
+          brand new website, select your preferred timeline, and we'll handle
+          the rest.
+        </p>
+      </div>
     </section>
-    <form
-      id="form"
-      class="bg-dark text-light p-4 rounded shadow-lg border border-primary"
-    >
-      <div class="col-md-6">
-        <label for="firstName" class="form-label">First Name</label>
-        <input
-          type="text"
-          class="form-control bg-secondary text-light border-0"
-          id="firstName"
-          name="First Name"
-          required
-        />
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <label for="lastName" class="form-label">Last Name</label>
-          <input
-            type="text"
-            class="form-control bg-secondary text-light border-0"
-            id="lastName"
-            name="Last Name"
-            required
-          />
-        </div>
-        <div class="col-md-6">
-          <label for="phonemail" class="form-label"
-            >Phone Number/Email Address</label
-          >
-          <input
-            type="text"
-            class="form-control bg-secondary text-light border-0"
-            id="phonemail"
-            name="Phone/Email"
-            required
-          />
-        </div>
-        <div class="col-12">
-          <label for="address" class="form-label">Service Address</label>
-          <input
-            type="text"
-            class="form-control bg-secondary text-light border-0"
-            id="address"
-            name="Address"
-            placeholder="123 Main St, City, State"
-            required
-          />
-        </div>
-        <div class="col-md-6">
-          <label for="date" class="form-label">Preferred Date</label>
-          <input
-            type="date"
-            class="form-control bg-secondary text-light border-0"
-            id="date"
-            name="Date"
-            required
-          />
-        </div>
-        <div class="col-md-6">
-          <label for="time" class="form-label">Preferred Time</label>
-          <input
-            type="time"
-            class="form-control bg-secondary text-light border-0"
-            id="time"
-            name="Time"
-            required
-          />
-        </div>
 
-        <div class="col-12">
-          <label for="service" class="form-label">Select a Service</label>
-          <select
-            class="form-select bg-secondary text-light border-0"
-            id="service"
-            name="Service"
-            required
-          >
-            <option value="" disabled selected>Choose one</option>
-            <option value="Garage Cleaning">Garage Cleaning</option>
-            <option value="Yard & Outdoor Help">Car Cleaning</option>
-            <option value="Furniture Assistance">Furniture Assistance</option>
-            <option value="Home Cleaning">Home Cleaning</option>
-            <option value="Tech Cleanup and Setup">
-              Tech Cleanup and Setup
-            </option>
-            <option value="5 in 1 deal">5 in 1</option>
-          </select>
-          <div class="text-warning fs-1 mt-2" id="priceDisplay"></div>
-          <p class="fs-3 text-light">
-            <strong>*Only Cash Payments Accepted</strong>
-          </p>
-        </div>
+    <!-- Order Form -->
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="form-container fade-in stagger-2">
+            <form id="form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName" class="form-label">First Name *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="firstName"
+                    name="First Name"
+                    placeholder="Your first name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="lastName" class="form-label">Last Name *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lastName"
+                    name="lastName"
+                    placeholder="Your last name"
+                    required
+                  />
+                </div>
+              </div>
 
-        <div class="col-12 text-center mt-4">
-          <button
-            class="btn btn-warning btn-lg px-5 shadow hover-lift me-3"
-            type="submit"
-            id="submit-button"
-          >
-            Submit
-          </button>
-          <button
-            class="btn btn-warning btn-lg px-5 shadow hover-lift"
-            type="button"
-            id="cancel-button"
-          >
-            Cancel
-          </button>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address *</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="your.email@example.com"
+                  required
+                />
+                <div class="form-text">
+                  We'll use this to send project updates and final deliverables
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="priority" class="form-label">
+                  How Quickly Do You Need This? *
+                </label>
+                <select
+                  class="form-select"
+                  id="priority"
+                  name="priority"
+                  required
+                >
+                  <option value="5">
+                    Standard Timeline - 2-3 weeks (No extra cost)
+                  </option>
+                  <option value="4">Fast Track - 1-2 weeks (+$8)</option>
+                  <option value="3">Priority Rush - 5-7 days (+$16)</option>
+                  <option value="2">Express Service - 3-5 days (+$24)</option>
+                  <option value="1">Emergency Rush - 1-2 days (+$32)</option>
+                </select>
+                <div class="form-text">
+                  Choose based on your timeline needs. Higher priority = faster
+                  delivery + additional fee.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="serviceType" class="form-label">
+                  What Type of Project Do You Need? *
+                </label>
+                <select
+                  class="form-select"
+                  id="serviceType"
+                  name="serviceType"
+                  required
+                >
+                  <option value="upgrade">
+                    Upgrade My Existing Website ($60 base price)
+                  </option>
+                  <option value="create">
+                    Build Me a Brand New Website (+$15 additional)
+                  </option>
+                </select>
+                <div class="form-text">
+                  Upgrades improve existing sites. New websites are built from
+                  scratch.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label
+                  for="projectDetails"
+                  class="form-label"
+                  id="detailsLabel"
+                >
+                  Current Website URL *
+                </label>
+                <textarea
+                  class="form-control"
+                  id="projectDetails"
+                  name="projectDetails"
+                  rows="4"
+                  placeholder="https://your-current-website.com"
+                  required
+                ></textarea>
+                <div class="form-text" id="detailsHelp">
+                  Provide the web address of the site you want us to upgrade
+                </div>
+              </div>
+
+              <div class="price-display">
+                <h5>Your Project Total</h5>
+                <h3 id="totalPrice">$60.00</h3>
+                <div id="priceBreakdown" class="price-breakdown">
+                  <div>Base Service Fee: $60.00</div>
+                  <div id="priorityFee">Timeline Priority: $0.00</div>
+                  <div id="serviceFee">Project Type: $0.00</div>
+                </div>
+              </div>
+
+              <div class="mb-3 mt-4">
+                <div class="checkbox-item">
+                  <input
+                    type="checkbox"
+                    id="confirmationDetails"
+                    name="confirmationDetails"
+                    value="yes"
+                    required
+                  />
+                  <label
+                    for="confirmationDetails"
+                    style="color: rgba(255, 127, 80, 1); font-weight: 600"
+                  >
+                    I understand this is a paid service with NO REFUNDS. I
+                    confirm my project details are correct and I'm ready to
+                    proceed. *
+                  </label>
+                </div>
+              </div>
+              <div class="mb-3 mt-4">
+                <div class="checkbox-item">
+                  <input
+                    type="checkbox"
+                    id="confirmationDetails2"
+                    name="confirmationDetails"
+                    value="yes"
+                    required
+                  />
+                  <label
+                    for="confirmationDetails2"
+                    style="color: rgba(255, 127, 80, 1); font-weight: 600"
+                  >
+                    I have read and agreed to the
+                    <a
+                      href=""
+                      style="color: rgba(255, 127, 80, 1); font-weight: 600"
+                      >Terms and Services</a
+                    >
+                    and abide to all conditions.
+                  </label>
+                </div>
+              </div>
+
+              <div class="text-center mt-4">
+                <button
+                  type="submit"
+                  class="btn btn-gradient btn-lg"
+                  id="submit-button"
+                >
+                  Submit My Project Request
+                </button>
+              </div>
+            </form>
+
+            <div id="message" style="display: none"></div>
+          </div>
         </div>
       </div>
-    </form>
-    <div
-      id="message"
-      style="
-        display: none;
-        margin: 20px;
-        padding: 10px;
-        border-radius: 4px;
-        font-weight: bold;
-      "
-    ></div>
-    <footer class="text-white text-center py-4 mt-5 bg-primary">
+    </div>
+
+    <!-- Footer -->
+    <footer>
       <div class="container">
         <div class="row">
-          <div class="col-12 col-md-6 col-lg-4">
-            <p class="mb-1">
-              &copy; 2025 Novalayer Home Services. All rights reserved.
+          <div class="col-md-4 text-center text-md-start">
+            <p>
+              &copy; 2025 WebCraftFactory (WCF). Crafting exceptional web
+              experiences since 2024.
             </p>
           </div>
-
-          <div class="col-12 col-md-6 col-lg-4">
-            <p class="mb-0">
-              Like 3D prints? Check out this website!
+          <div class="col-md-4 text-center">
+            <p>
+              Contact us:
               <a
-                href="https://om-coding.github.io/Novalayer/home.html"
-                class="text-warning text-decoration-underline"
-                target="_blank"
-                >Click here</a
+                href="https://mail.google.com/mail/u/0/#inbox"
+                style="color: var(--primary)"
+                >avimehta129@gmail.com</a
               >
             </p>
           </div>
-
-          <div class="col-12 col-md-6 col-lg-4">
-            <p class="mb-1">
-              For any questions, contact
-              <span class="text-warning"> avimehta129@gmail.com </span>
+          <div class="col-md-4 text-center text-md-end">
+            <p>
+              <a href="terms.html" style="color: var(--primary)"
+                >Terms & Services</a
+              >
             </p>
           </div>
         </div>
       </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const dateInput = document.getElementById("date");
-        const timeInput = document.getElementById("time");
-        const form = document.getElementById("form");
-        const submitButton = document.getElementById("submit-button");
-        const cancelButton = document.getElementById("cancel-button");
-        const messageDiv = document.getElementById("message");
-        const serviceSelect = document.getElementById("service");
-        const priceDisplay = document.getElementById("priceDisplay");
-        const requirementsModal = new bootstrap.Modal(
-          document.getElementById("requirementsModal")
-        );
-        const warning = document.createElement("p");
-        warning.style.color = "red";
-        warning.style.marginTop = "10px";
-        form.appendChild(warning);
+      const form = document.getElementById("form");
+      const submitButton = document.getElementById("submit-button");
+      const messageDiv = document.getElementById("message");
+      const basePrice = 60;
+      const serviceType = document.getElementById("serviceType");
+      const priority = document.getElementById("priority");
+      const detailsLabel = document.getElementById("detailsLabel");
+      const detailsHelp = document.getElementById("detailsHelp");
+      const projectDetails = document.getElementById("projectDetails");
+      const totalPrice = document.getElementById("totalPrice");
+      const priorityFeeEl = document.getElementById("priorityFee");
+      const serviceFeeEl = document.getElementById("serviceFee");
 
-        // Set default time to 00:00
-        timeInput.value = "00:00";
+      function updatePrice() {
+        let total = basePrice;
+        let priorityFee = (5 - parseInt(priority.value)) * 8;
+        let serviceFee = serviceType.value === "create" ? 15 : 0;
+        total = basePrice + priorityFee + serviceFee;
 
-        // Example: pretend these are already booked
-        const bookedSlots = [
-          { date: "2025-06-10", time: "14:00" },
-          { date: "2025-06-11", time: "09:00" },
-        ];
+        totalPrice.textContent = `$${total.toFixed(2)}`;
+        priorityFeeEl.textContent = `Timeline Priority: $${priorityFee.toFixed(
+          2
+        )}`;
+        serviceFeeEl.textContent = `Project Type: $${serviceFee.toFixed(2)}`;
 
-        // Set minimum date (3 days from today)
-        const today = new Date();
-        const minDate = new Date(today);
-        minDate.setDate(today.getDate() + 3);
-        dateInput.min = minDate.toISOString().split("T")[0];
+        // Add animation
+        document
+          .querySelector(".price-display")
+          .classList.add("success-animation");
+        setTimeout(() => {
+          document
+            .querySelector(".price-display")
+            .classList.remove("success-animation");
+        }, 600);
+      }
 
-        // Optional: Set a maximum date (e.g., 6 months from today)
-        const maxDate = new Date();
-        maxDate.setMonth(maxDate.getMonth() + 6);
-        dateInput.max = maxDate.toISOString().split("T")[0];
-
-        // Service prices
-        const servicePrices = {
-          "Garage Cleaning": "$29",
-          "Yard & Outdoor Help": "$30",
-          "Furniture Assistance": "$22",
-          "Home Cleaning": "$49",
-          "Tech Cleanup and Setup": "$28",
-          "5 in 1 deal": "$69",
-        };
-
-        // Check if a slot is already booked
-        function checkAvailability() {
-          const date = dateInput.value;
-          const time = timeInput.value;
-          const isBooked = bookedSlots.some(
-            (slot) => slot.date === date && slot.time === time
-          );
-          warning.textContent = isBooked
-            ? "This date and time are already booked!"
-            : "";
-          return !isBooked;
+      function updateFormLabels() {
+        if (serviceType.value === "create") {
+          detailsLabel.textContent = "Describe Your New Website Vision *";
+          detailsHelp.textContent =
+            "Tell us about your business, target audience, desired features, style preferences, and any specific requirements.";
+          projectDetails.placeholder =
+            "Example: I need a modern website for my restaurant with online ordering, photo gallery, and contact forms. I want a warm, welcoming design that appeals to families...";
+        } else {
+          detailsLabel.textContent = "Current Website URL *";
+          detailsHelp.textContent =
+            "Provide the web address of the site you want us to upgrade";
+          projectDetails.placeholder = "https://your-current-website.com";
         }
+      }
 
-        // Validate date and time
-        function validateDateTime() {
-          if (!dateInput.value || !timeInput.value) return false;
-
-          // Force date parsing to avoid timezone issues
-          const selectedDate = new Date(dateInput.value + "T00:00:00");
-          // Check if date is valid
-          if (isNaN(selectedDate.getTime())) return false;
-
-          const minDate = new Date();
-          minDate.setDate(minDate.getDate() + 3);
-          minDate.setHours(0, 0, 0, 0);
-
-          const time = timeInput.value;
-          // Check if time is between 10:00 and 18:00 AND ends with :00
-          if (time < "10:00" || time > "18:00" || !time.endsWith(":00")) {
-            return false;
-          }
-
-          return true;
-        }
-
-        // Price display
-        serviceSelect.addEventListener("change", function () {
-          const selectedService = serviceSelect.value;
-          priceDisplay.textContent = servicePrices[selectedService]
-            ? `Price: ${servicePrices[selectedService]}`
-            : "";
-        });
-
-        // Force minutes to :00 on change
-        timeInput.addEventListener("change", function () {
-          let time = this.value;
-          if (time && !time.endsWith(":00")) {
-            time = time.split(":")[0] + ":00";
-            this.value = time;
-          }
-          checkAvailability();
-        });
-
-        // Check availability on date change
-        dateInput.addEventListener("change", checkAvailability);
-
-        // Cancel button
-        cancelButton.addEventListener("click", function () {
-          form.reset();
-          messageDiv.style.display = "none";
-          priceDisplay.textContent = "";
-          warning.textContent = "";
-          // Reset time to 00:00
-          timeInput.value = "00:00";
-        });
-
-        // Form submission
-        form.addEventListener("submit", async function (e) {
-          e.preventDefault();
-
-          // Debug: log the date and parsed day
-          console.log(
-            "Submit - Date:",
-            dateInput.value,
-            "Time:",
-            timeInput.value
-          );
-          const selectedDate = new Date(dateInput.value + "T00:00:00");
-          console.log("Submit - Parsed day:", selectedDate.getDay());
-
-          // Check all rules
-          const isValid = validateDateTime() && checkAvailability();
-          if (!isValid) {
-            requirementsModal.show();
-            return;
-          }
-
-          messageDiv.textContent = "Submitting...";
-          messageDiv.style.display = "block";
-          messageDiv.style.backgroundColor = "beige";
-          messageDiv.style.color = "black";
-          submitButton.disabled = true;
-          submitButton.classList.add("is-loading");
-
-          try {
-            const formData = new FormData(this);
-            const formDataObj = {};
-            for (let [key, value] of formData.entries()) {
-              formDataObj[key] = value;
-            }
-
-            const scriptURL =
-              "https://script.google.com/macros/s/AKfycbwnqIEaGO11GNJw32lVmHzJaC5vDtc99bdd_quZk4DZEKH5eLK-kzaVrwlh0GqTlQc4bQ/exec";
-
-            const response = await fetch(scriptURL, {
-              redirect: "follow",
-              method: "POST",
-              body: JSON.stringify(formDataObj),
-              headers: {
-                "Content-Type": "text/plain;charset=utf-8",
-              },
-            });
-
-            const data = await response.json();
-
-            if (data.status === "success") {
-              messageDiv.textContent =
-                data.message || "Data submitted successfully!";
-              messageDiv.style.backgroundColor = "#48c78e";
-              messageDiv.style.color = "white";
-              form.reset();
-              // Reset time to 00:00 after submit
-              timeInput.value = "00:00";
-            } else {
-              throw new Error(data.message || "Submission failed");
-            }
-          } catch (error) {
-            console.error("Error:", error);
-            messageDiv.textContent = "Error: " + error.message;
-            messageDiv.style.backgroundColor = "#f14668";
-            messageDiv.style.color = "white";
-          } finally {
-            submitButton.disabled = false;
-            submitButton.classList.remove("is-loading");
-            setTimeout(() => {
-              messageDiv.textContent = "";
-              messageDiv.style.display = "none";
-            }, 4000);
-          }
-        });
+      serviceType.addEventListener("change", () => {
+        updatePrice();
+        updateFormLabels();
       });
+
+      priority.addEventListener("change", updatePrice);
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        // Show submitting notification
+        showDropdownNotification(
+          "🚀 Submitting your project request...",
+          "info"
+        );
+
+        submitButton.disabled = true;
+        submitButton.innerHTML =
+          '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+        try {
+          const formData = new FormData(this);
+          const formDataObj = {};
+
+          // Convert FormData to object
+          for (let [key, value] of formData.entries()) {
+            formDataObj[key] = value;
+          }
+
+          // Calculate total price and add to form data
+          let total =
+            basePrice +
+            (5 - parseInt(formDataObj.priority)) * 8 +
+            (formDataObj.serviceType === "create" ? 15 : 0);
+          formDataObj.totalPrice = `$${total.toFixed(2)}`;
+
+          // Submit form data
+          const scriptURL =
+            "https://script.google.com/macros/s/AKfycbz0apiVSGNk2DrXtXk60TfdEdTC1Hxru0P8UeY35gU4y9Tti0E0EY3w-YrSkwbWKAs3/exec";
+
+          const response = await fetch(scriptURL, {
+            redirect: "follow",
+            method: "POST",
+            body: JSON.stringify(formDataObj),
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+          });
+
+          const data = await response.json();
+
+          if (data.status === "success") {
+            const priorityNames = {
+              5: "Standard Timeline",
+              4: "Fast Track",
+              3: "Priority Rush",
+              2: "Express Service",
+              1: "Emergency Rush",
+            };
+
+            // Success notification
+            showDropdownNotification(
+              "✅ Project request submitted successfully!",
+              "success"
+            );
+
+            // Show detailed success notification after a delay
+            setTimeout(() => {
+              showDropdownNotification(
+                `🚀 What's Next: You'll receive project details via email within 4 hours. Thank you for choosing WebCraftFactory!`,
+                "success"
+              );
+            }, 3000);
+
+            form.reset();
+            updatePrice();
+            updateFormLabels();
+          } else {
+            throw new Error(data.message || "Submission failed");
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          showDropdownNotification(
+            "❌ Submission failed: " + error.message,
+            "error"
+          );
+        } finally {
+          submitButton.disabled = false;
+          submitButton.innerHTML = "Submit My Project Request";
+        }
+      });
+
+      // Dropdown notification system
+      function showDropdownNotification(message, type = "info") {
+        // Remove existing notification
+        const existingNotification = document.querySelector(
+          ".dropdown-notification"
+        );
+        if (existingNotification) {
+          existingNotification.remove();
+        }
+
+        // Create new notification
+        const notification = document.createElement("div");
+        notification.className = "dropdown-notification";
+        notification.textContent = message;
+
+        // Style based on type
+        switch (type) {
+          case "success":
+            notification.style.background =
+              "linear-gradient(135deg, #10b981, #059669)";
+            break;
+          case "error":
+            notification.style.background =
+              "linear-gradient(135deg, #ef4444, #dc2626)";
+            break;
+          case "warning":
+            notification.style.background =
+              "linear-gradient(135deg, #f59e0b, #d97706)";
+            break;
+          default: // info
+            notification.style.background =
+              "linear-gradient(135deg, var(--primary), var(--secondary))";
+        }
+
+        document.body.appendChild(notification);
+
+        // Trigger animation
+        setTimeout(() => {
+          notification.classList.add("show");
+        }, 100);
+
+        // Auto hide after 4 seconds
+        setTimeout(() => {
+          notification.classList.remove("show");
+          setTimeout(() => {
+            if (notification.parentNode) {
+              notification.remove();
+            }
+          }, 500);
+        }, 4000);
+      }
+
+      // Initialize
+      updatePrice();
+      updateFormLabels();
+
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Form field animations
+      document
+        .querySelectorAll(".form-control, .form-select")
+        .forEach((field) => {
+          field.addEventListener("focus", function () {
+            this.parentElement.style.transform = "translateY(-2px)";
+            this.parentElement.style.transition = "transform 0.3s ease";
+          });
+
+          field.addEventListener("blur", function () {
+            this.parentElement.style.transform = "translateY(0)";
+          });
+        });
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Bootstrap Modal for Requirements -->
-    <!-- Bootstrap Modal for Requirements -->
-    <div
-      class="modal fade"
-      id="requirementsModal"
-      tabindex="-1"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content bg-dark text-light">
-          <div class="modal-header border-0">
-            <h5 class="modal-title">Booking Requirements</h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <p>
-              At least
-              <strong>3 days in advance</strong>, and a time between
-              <strong>10:00 AM and 6:00 PM</strong>
-              <strong>on the hour (e.g., 10:00, 11:00, etc.)</strong>.
-            </p>
-          </div>
-          <div class="modal-footer border-0">
-            <button
-              type="button"
-              class="btn btn-warning"
-              data-bs-dismiss="modal"
-            >
-              OK
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
   </body>
 </html>
