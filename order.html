@@ -1,14 +1,16 @@
 <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Order Your Website - WebCraftFactory Professional Web Services
-    </title>
+    <title>Order – WCF</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
     <meta
       name="description"
-      content="Start your web project today. Choose from website upgrades or custom development with flexible priority options. Transparent pricing starting at $60."
+      content="Start your web project today. Choose from website upgrades or custom development with flexible priority options. Transparent pricing starting at $25."
     />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -18,7 +20,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <style>
       :root {
         --primary: #20c997;
@@ -229,7 +234,7 @@
       /* Form Elements */
       .form-label {
         font-weight: 600;
-        color: #ffffff !important;
+        color: #ffffff;
         font-size: 1rem;
         margin-bottom: 0.5rem;
         display: block;
@@ -240,7 +245,7 @@
         background: rgba(255, 255, 255, 0.05);
         border: 2px solid rgba(255, 255, 255, 0.1);
         border-radius: 12px;
-        color: #ffffff !important;
+        color: #ffffff;
         padding: 15px 20px;
         font-size: 1rem;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -252,12 +257,11 @@
         border-color: var(--primary);
         box-shadow: 0 0 0 3px var(--glow-primary);
         background: rgba(255, 255, 255, 0.08);
-        color: #ffffff !important;
         outline: none;
       }
 
       .form-control::placeholder {
-        color: rgba(255, 255, 255, 0.5) !important;
+        color: rgba(255, 255, 255, 0.5);
       }
 
       /* Textarea */
@@ -278,6 +282,16 @@
         color: rgba(255, 255, 255, 0.6);
         font-size: 0.875rem;
         margin-top: 0.5rem;
+      }
+
+      /* ✅ Force all form text to be white */
+      .form-label,
+      .form-text,
+      .form-control,
+      .form-control::placeholder,
+      .form-select,
+      textarea.form-control {
+        color: #ffffff !important;
       }
 
       /* Price Display - Futuristic */
@@ -502,7 +516,12 @@
         left: 0;
         right: 0;
         height: 3px;
-        background: linear-gradient(90deg, rgba(255, 255, 255, 0.5), transparent, rgba(255, 255, 255, 0.5));
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.5),
+          transparent,
+          rgba(255, 255, 255, 0.5)
+        );
         animation: shimmer 2s linear infinite;
       }
 
@@ -516,8 +535,6 @@
       }
 
       .checkbox-item input[type="checkbox"] {
-        width: 20px;
-        height: 20px;
         accent-color: var(--primary);
       }
 
@@ -546,7 +563,7 @@
   </head>
   <body>
     <!-- Glass Navigation -->
-<nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
         <a class="navbar-brand" href="home.html">WCF</a>
         <button
@@ -560,7 +577,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="home.html">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link order-link" href="order.html">Get Started</a>
@@ -572,7 +589,6 @@
         </div>
       </div>
     </nav>
-
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -611,7 +627,7 @@
                     type="text"
                     class="form-control"
                     id="lastName"
-                    name="lastName"
+                    name="Last Name"
                     placeholder="Your last name"
                     required
                   />
@@ -624,7 +640,7 @@
                   type="email"
                   class="form-control"
                   id="email"
-                  name="email"
+                  name="Email"
                   placeholder="your.email@example.com"
                   required
                 />
@@ -640,16 +656,16 @@
                 <select
                   class="form-select"
                   id="priority"
-                  name="priority"
+                  name="Priority"
                   required
                 >
                   <option value="5">
                     Standard Timeline - 2-3 weeks (No extra cost)
                   </option>
-                  <option value="4">Fast Track - 1-2 weeks (+$8)</option>
-                  <option value="3">Priority Rush - 5-7 days (+$16)</option>
-                  <option value="2">Express Service - 3-5 days (+$24)</option>
-                  <option value="1">Emergency Rush - 1-2 days (+$32)</option>
+                  <option value="4">Fast Track - 1-2 weeks (+$4)</option>
+                  <option value="3">Priority Rush - 5-7 days (+$8)</option>
+                  <option value="2">Express Service - 3-5 days (+$12)</option>
+                  <option value="1">Emergency Rush - 1-2 days (+$16)</option>
                 </select>
                 <div class="form-text">
                   Choose based on your timeline needs. Higher priority = faster
@@ -664,14 +680,14 @@
                 <select
                   class="form-select"
                   id="serviceType"
-                  name="serviceType"
+                  name="Service Type"
                   required
                 >
                   <option value="upgrade">
-                    Upgrade My Existing Website ($60 base price)
+                    Upgrade My Existing Website ($25 base price)
                   </option>
                   <option value="create">
-                    Build Me a Brand New Website (+$15 additional)
+                    Build Me a Brand New Website (+$10 additional)
                   </option>
                 </select>
                 <div class="form-text">
@@ -691,7 +707,7 @@
                 <textarea
                   class="form-control"
                   id="projectDetails"
-                  name="projectDetails"
+                  name="Project Details"
                   rows="4"
                   placeholder="https://your-current-website.com"
                   required
@@ -703,9 +719,9 @@
 
               <div class="price-display">
                 <h5>Your Project Total</h5>
-                <h3 id="totalPrice">$60.00</h3>
+                <h3 id="totalPrice">$25.00</h3>
                 <div id="priceBreakdown" class="price-breakdown">
-                  <div>Base Service Fee: $60.00</div>
+                  <div>Base Service Fee: $25.00</div>
                   <div id="priorityFee">Timeline Priority: $0.00</div>
                   <div id="serviceFee">Project Type: $0.00</div>
                 </div>
@@ -713,31 +729,61 @@
 
               <div class="mb-3 mt-4">
                 <div class="checkbox-item">
-                  <input type="checkbox" id="finalConfirmation" name="finalConfirmation" value="yes" required>
-                  <label for="finalConfirmation" style="color: rgba(255, 127, 80, 1); font-weight: 600;">
-                    I understand this is a paid service with NO REFUNDS. I confirm my project details are correct and I'm ready to proceed. *
+                  <input
+                    type="checkbox"
+                    id="finalConfirmation"
+                    name="finalConfirmation"
+                    value="yes"
+                    required
+                  />
+                  <label
+                    for="finalConfirmation"
+                    style="color: rgba(255, 127, 80, 1); font-weight: 600"
+                  >
+                    I understand this is a paid service with NO REFUNDS. I
+                    confirm my project details are correct and I'm ready to
+                    proceed. *
+                  </label>
+                </div>
+              </div>
+              <div class="mb-3 mt-4">
+                <div class="checkbox-item">
+                  <input
+                    type="checkbox"
+                    id="finalConfirmation2"
+                    name="finalConfirmation2"
+                    value="yes"
+                    required
+                  />
+                  <label
+                    for="finalConfirmation2"
+                    style="color: rgba(255, 127, 80, 1); font-weight: 600"
+                  >
+                    I have read, understood, and agreed to the terms and
+                    conditions of WCF. *
                   </label>
                 </div>
               </div>
 
               <div class="text-center mt-4">
-                <button type="submit" class="btn btn-gradient btn-lg" id="submit-button">
+                <button
+                  type="submit"
+                  class="btn btn-gradient btn-lg"
+                  id="submit-button"
+                >
                   Submit My Project Request
                 </button>
               </div>
             </form>
 
-            <div
-              id="message"
-              style="display: none;"
-            ></div>
+            <div id="message" style="display: none"></div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Footer -->
-     <footer>
+    <footer>
       <div class="container">
         <div class="row">
           <div class="col-md-4 text-center text-md-start">
@@ -772,7 +818,7 @@
       const form = document.getElementById("form");
       const submitButton = document.getElementById("submit-button");
       const messageDiv = document.getElementById("message");
-      const basePrice = 60;
+      const basePrice = 25;
       const serviceType = document.getElementById("serviceType");
       const priority = document.getElementById("priority");
       const detailsLabel = document.getElementById("detailsLabel");
@@ -784,18 +830,24 @@
 
       function updatePrice() {
         let total = basePrice;
-        let priorityFee = (5 - parseInt(priority.value)) * 8;
-        let serviceFee = serviceType.value === "create" ? 15 : 0;
+        let priorityFee = (5 - parseInt(priority.value)) * 4;
+        let serviceFee = serviceType.value === "create" ? 10 : 0;
         total = basePrice + priorityFee + serviceFee;
 
         totalPrice.textContent = `$${total.toFixed(2)}`;
-        priorityFeeEl.textContent = `Timeline Priority: $${priorityFee.toFixed(2)}`;
+        priorityFeeEl.textContent = `Timeline Priority: $${priorityFee.toFixed(
+          2
+        )}`;
         serviceFeeEl.textContent = `Project Type: $${serviceFee.toFixed(2)}`;
 
         // Add animation
-        document.querySelector(".price-display").classList.add("success-animation");
+        document
+          .querySelector(".price-display")
+          .classList.add("success-animation");
         setTimeout(() => {
-          document.querySelector(".price-display").classList.remove("success-animation");
+          document
+            .querySelector(".price-display")
+            .classList.remove("success-animation");
         }, 600);
       }
 
@@ -825,10 +877,14 @@
         e.preventDefault();
 
         // Show submitting notification
-        showDropdownNotification("🚀 Submitting your project request...", "info");
-        
+        showDropdownNotification(
+          "🚀 Submitting your project request...",
+          "info"
+        );
+
         submitButton.disabled = true;
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        submitButton.innerHTML =
+          '<i class="fas fa-spinner fa-spin"></i> Processing...';
 
         try {
           const formData = new FormData(this);
@@ -840,7 +896,10 @@
           }
 
           // Calculate total price and add to form data
-          let total = basePrice + (5 - parseInt(formDataObj.priority)) * 8 + (formDataObj.serviceType === "create" ? 15 : 0);
+          let total =
+            basePrice +
+            (5 - parseInt(formDataObj.priority)) * 8 +
+            (formDataObj.serviceType === "create" ? 15 : 0);
           formDataObj.totalPrice = `$${total.toFixed(2)}`;
 
           // Submit form data
@@ -861,22 +920,25 @@
           if (data.status === "success") {
             const priorityNames = {
               5: "Standard Timeline",
-              4: "Fast Track", 
+              4: "Fast Track",
               3: "Priority Rush",
               2: "Express Service",
               1: "Emergency Rush",
             };
 
             // Success notification
-            showDropdownNotification("✅ Project request submitted successfully!", "success");
+            showDropdownNotification(
+              "✅ Project request submitted successfully!",
+              "success"
+            );
 
             // Show detailed success notification after a delay
             setTimeout(() => {
               showDropdownNotification(
-                `🚀 What's Next: You'll receive project details via email within 4 hours. Thank you for choosing WebCraftFactory!`,
+                `🚀 What's Next: You'll receive project details via email within 12-24 hours. Thank you for choosing WebCraftFactory!`,
                 "success"
               );
-            }, 3000);
+            }, 4000);
 
             form.reset();
             updatePrice();
@@ -886,7 +948,10 @@
           }
         } catch (error) {
           console.error("Error:", error);
-          showDropdownNotification("❌ Submission failed: " + error.message, "error");
+          showDropdownNotification(
+            "❌ Submission failed: " + error.message,
+            "error"
+          );
         } finally {
           submitButton.disabled = false;
           submitButton.innerHTML = "Submit My Project Request";
@@ -896,41 +961,47 @@
       // Dropdown notification system
       function showDropdownNotification(message, type = "info") {
         // Remove existing notification
-        const existingNotification = document.querySelector('.dropdown-notification');
+        const existingNotification = document.querySelector(
+          ".dropdown-notification"
+        );
         if (existingNotification) {
           existingNotification.remove();
         }
 
         // Create new notification
-        const notification = document.createElement('div');
-        notification.className = 'dropdown-notification';
+        const notification = document.createElement("div");
+        notification.className = "dropdown-notification";
         notification.textContent = message;
 
         // Style based on type
-        switch(type) {
+        switch (type) {
           case "success":
-            notification.style.background = "linear-gradient(135deg, #10b981, #059669)";
+            notification.style.background =
+              "linear-gradient(135deg, #10b981, #059669)";
             break;
           case "error":
-            notification.style.background = "linear-gradient(135deg, #ef4444, #dc2626)";
+            notification.style.background =
+              "linear-gradient(135deg, #ef4444, #dc2626)";
             break;
           case "warning":
-            notification.style.background = "linear-gradient(135deg, #f59e0b, #d97706)";
+            notification.style.background =
+              "linear-gradient(135deg, #f59e0b, #d97706)";
             break;
           default: // info
-            notification.style.background = "linear-gradient(135deg, var(--primary), var(--secondary))";
+            notification.style.background =
+              "linear-gradient(135deg, var(--primary), var(--secondary))";
         }
 
         document.body.appendChild(notification);
 
         // Trigger animation
         setTimeout(() => {
-          notification.classList.add('show');
+          notification.classList.add("show");
         }, 100);
 
         // Auto hide after 4 seconds
         setTimeout(() => {
-          notification.classList.remove('show');
+          notification.classList.remove("show");
           setTimeout(() => {
             if (notification.parentNode) {
               notification.remove();
