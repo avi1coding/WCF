@@ -3,9 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-
-    <title>Home – WCF</title>
+    <title>WCF - Professional Web Design & Development Services</title>
     <meta
       name="description"
       content="Transform your online presence with WebCraftFactory's custom websites and professional upgrades. Fast delivery, transparent pricing, priority service options."
@@ -179,7 +177,6 @@
           rgba(26, 26, 26, 0.7) 100%
         );
         overflow: hidden;
-        padding-top: 80px;
       }
 
       .hero-particles {
@@ -266,7 +263,7 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
         margin-bottom: 1.5rem;
-        margin-top: 3rem;
+        margin-top: 8rem;
         line-height: 1.2;
         animation: textGlow 3s ease-in-out infinite alternate;
       }
@@ -596,7 +593,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="#home">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link order-link" href="order.html">Get Started</a>
@@ -621,7 +618,7 @@
 
       <div class="container">
         <div class="hero-content fade-in">
-          <h1>WCF: Order, Upload, Enchance</h1>
+          <h1>WebCraftFactory: Order, Upload, Enchance</h1>
           <p>
             Get a website that is perfect for your business. WCF builds and
             upgrades sites with modern design, powerful features, and flexible
@@ -705,7 +702,7 @@
               <h5 style="color: var(--primary); font-size: 1.5rem">
                 Website Upgrades
               </h5>
-              <h4>$25</h4>
+              <h4>$60</h4>
               <p style="color: rgba(255, 255, 255, 0.8)">
                 Modernize your existing website with fresh design, improved
                 performance, mobile optimization, and enhanced user experience.
@@ -718,7 +715,7 @@
               <h5 style="color: var(--primary); font-size: 1.5rem">
                 New Website Creation
               </h5>
-              <h4>$35</h4>
+              <h4>$75+</h4>
               <p style="color: rgba(255, 255, 255, 0.8)">
                 Complete custom website development from concept to launch.
                 Includes everything in upgrades plus custom branding, content
@@ -783,25 +780,18 @@
         <div class="row">
           <div class="col-md-4 text-center text-md-start">
             <p>
-              &copy; 2025 WebCraftFactory (WCF). Crafting exceptional web
-              experiences since 2024.
+              &copy; 2025 WebCraftFactory (WCF). Crafting exceptional web experiences since 2024.
             </p>
           </div>
           <div class="col-md-4 text-center">
             <p>
               Contact us:
-              <a
-                href="https://mail.google.com/mail/u/0/#inbox"
-                style="color: var(--primary)"
-                >avimehta129@gmail.com</a
-              >
+              <a href="#" onclick="copyEmail(event)" style="color: var(--primary); cursor: pointer;">avimehta129@gmail.com</a>
             </p>
           </div>
           <div class="col-md-4 text-center text-md-end">
             <p>
-              <a href="terms.html" style="color: var(--primary)"
-                >Terms & Services</a
-              >
+              <a href="terms.html" style="color: var(--primary)">Terms & Services</a>
             </p>
           </div>
         </div>
@@ -851,6 +841,18 @@
           }
         });
       });
+
+
+
+      function copyEmail(event) {
+  event.preventDefault();
+  const email = 'avimehta129@gmail.com';
+  navigator.clipboard.writeText(email).then(() => {
+    alert('Email copied to clipboard!');
+  }).catch(err => {
+    console.error('Failed to copy:', err);
+  });
+}
     </script>
   </body>
 </html>
